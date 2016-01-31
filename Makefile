@@ -26,6 +26,9 @@ container:
 	./meta/launch
 
 deps:
+	rm -rf $(DEP_DIR)
+	mkdir -p $(DEP_DIR)/usr/include
+	cp -R /usr/include/{linux,asm,asm-generic} $(DEP_DIR)/usr/include/
 
 build: submodule deps
 	rm -rf $(BUILD_DIR)
