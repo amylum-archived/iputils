@@ -30,6 +30,9 @@ deps:
 build: submodule deps
 	rm -rf $(BUILD_DIR)
 	cp -R upstream $(BUILD_DIR)
+	rm -rf $(BUILD_DIR)/.git
+	cp -R .git/modules/upstream $(BUILD_DIR)/.git
+	sed -i '/worktree/d' $(BUILD_DIR)/.git/config
 	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) CC=musl-gcc CFLAGS='$(CFLAGS)' install
 	mkdir -p $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE)
 	cp $(BUILD_DIR)/COPYING $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE)/LICENSE
