@@ -27,8 +27,9 @@ container:
 
 deps:
 	rm -rf $(DEP_DIR)
-	mkdir -p $(DEP_DIR)/usr/include
+	mkdir -p $(DEP_DIR)/usr/include/sys
 	cp -R /usr/include/{linux,asm,asm-generic} $(DEP_DIR)/usr/include/
+	cp -R /usr/include/sys/capability.h $(DEP_DIR)/usr/include/sys/
 
 build: submodule deps
 	rm -rf $(BUILD_DIR)
