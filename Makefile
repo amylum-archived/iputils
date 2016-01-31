@@ -33,6 +33,7 @@ deps:
 build: submodule deps
 	rm -rf $(BUILD_DIR)
 	cp -R upstream $(BUILD_DIR)
+	patch -d $(BUILD_DIR) -p1 < patches/net-misc_iputils_files_iputils-20121221-add-bits_types_h.patch
 	rm -rf $(BUILD_DIR)/.git
 	cp -R .git/modules/upstream $(BUILD_DIR)/.git
 	sed -i '/worktree/d' $(BUILD_DIR)/.git/config
