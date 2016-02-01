@@ -8,7 +8,7 @@ RELEASE_DIR = /tmp/$(PACKAGE)-release
 RELEASE_FILE = /tmp/$(PACKAGE).tar.gz
 CFLAGS = -static -static-libgcc -Wl,-static -I$(DEP_DIR)/usr/include
 
-PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe --tags | sed 's/v//')
+PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe --tags | sed 's/s//')
 PATCH_VERSION = $$(cat version)
 VERSION = $(PACKAGE_VERSION)-$(PATCH_VERSION)
 
