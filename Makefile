@@ -24,6 +24,12 @@ LIBGCRYPT_TAR = /tmp/libgcrypt.tar.gz
 LIBGCRYPT_DIR = /tmp/libgcrypt
 LIBGCRYPT_PATH = -I$(LIBGCRYPT_DIR)/usr/include -L$(LIBGCRYPT_DIR)/usr/lib
 
+LIBGPG-ERROR_VERSION = 1.21-3
+LIBGPG-ERROR_URL = https://github.com/amylum/libgpg-error/releases/download/$(LIBGPG-ERROR_VERSION)/libgpg-error.tar.gz
+LIBGPG-ERROR_TAR = /tmp/libgpgerror.tar.gz
+LIBGPG-ERROR_DIR = /tmp/libgpg-error
+LIBGPG-ERROR_PATH = -I$(LIBGPG-ERROR_DIR)/usr/include -L$(LIBGPG-ERROR_DIR)/usr/lib
+
 .PHONY : default submodule deps manual container deps build version push local
 
 default: submodule container
@@ -49,7 +55,10 @@ deps:
 	mkdir $(LIBGCRYPT_DIR)
 	curl -sLo $(LIBGCRYPT_TAR) $(LIBGCRYPT_URL)
 	tar -x -C $(LIBGCRYPT_DIR) -f $(LIBGCRYPT_TAR)
-
+	rm -rf $(LIBGPG-ERROR_DIR) $(LIBGPG-ERROR_TAR)
+	mkdir $(LIBGPG-ERROR_DIR)
+	curl -sLo $(LIBGPG-ERROR_TAR) $(LIBGPG-ERROR_URL)
+	tar -x -C $(LIBGPG-ERROR_DIR) -f $(LIBGPG-ERROR_TAR)
 
 build: submodule deps
 	rm -rf $(BUILD_DIR)
@@ -62,7 +71,7 @@ build: submodule deps
 	rm -rf $(BUILD_DIR)/.git
 	cp -R .git/modules/upstream $(BUILD_DIR)/.git
 	sed -i '/worktree/d' $(BUILD_DIR)/.git/config
-	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) CC=musl-gcc CFLAGS='$(CFLAGS) $(LIBCAP_PATH) $(LIBGCRYPT_PATH)' LDFLAGS='$(LIBCAP_PATH) $(LIBGCRYPT_PATH)'
+	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) CC=musl-gcc CFLAGS='$(CFLAGS) $(LIBCAP_PATH) $(LIBGCRYPT_PATH) $(LIBGPG-ERROR_PATH)' LDFLAGS='$(LIBCAP_PATH) $(LIBGCRYPT_PATH) $(LIBGPG-ERROR_PATH)'
 	mkdir -p $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE)
 	cp $(BUILD_DIR)/COPYING $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE)/LICENSE
 	cd $(RELEASE_DIR) && tar -czvf $(RELEASE_FILE) *

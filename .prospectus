@@ -12,7 +12,7 @@ item do
   end
 
   deps do
-    %w(libcap libgcrypt).each do |dep|
+    %w(libcap libgcrypt libgpg-error).each do |dep|
       item do
         name dep
 
