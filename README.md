@@ -1,7 +1,7 @@
 iputils
 ==========
 
-[![GPL Licensed](http://img.shields.io/badge/license-GPL-green.svg)](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3))
+[![BSD Licensed](http://img.shields.io/badge/license-BSD-green.svg)](https://tldrlegal.com/license/4-clause-bsd)
 
 Package repo for [iputils](http://www.skbuff.net/iputils/)
 
