@@ -75,7 +75,7 @@ build: submodule deps
 	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) CC=musl-gcc CFLAGS='$(CFLAGS) $(LIBCAP_PATH) $(LIBGCRYPT_PATH) $(LIBGPG-ERROR_PATH)' LDFLAGS='$(LIBCAP_PATH) $(LIBGCRYPT_PATH) $(LIBGPG-ERROR_PATH)'
 	mkdir -p $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE) $(RELEASE_DIR)/usr/bin
 	find $(BUILD_DIR) -maxdepth 1 -type f -executable | xargs -I{} cp {} $(RELEASE_DIR)/usr/bin
-	chmod 4755 $(RELEASE_DIR)/{ping,ping6}
+	chmod 4755 $(RELEASE_DIR)/usr/bin/{ping,ping6}
 	cp $(BUILD_DIR)/ninfod/COPYING $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE)/LICENSE
 	cd $(RELEASE_DIR) && tar -czvf $(RELEASE_FILE) *
 
