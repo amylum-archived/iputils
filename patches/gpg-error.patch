@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 54e5a6d..d9fd0e8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -12,7 +12,7 @@ ADDLIB=
+ LDFLAG_STATIC=-Wl,-Bstatic
+ LDFLAG_DYNAMIC=-Wl,-Bdynamic
+ LDFLAG_CAP=-lcap
+-LDFLAG_GCRYPT=-lgcrypt
++LDFLAG_GCRYPT=-lgcrypt -lgpg-error
+ LDFLAG_CRYPTO=-lcrypto
+ LDFLAG_IDN=-lidn
+ LDFLAG_RESOLV=-lresolv
