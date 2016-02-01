@@ -12,7 +12,7 @@ PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe --tags | sed 's/v//')
 PATCH_VERSION = $$(cat version)
 VERSION = $(PACKAGE_VERSION)-$(PATCH_VERSION)
 
-LIBCAP_VERSION = 2.25-2
+LIBCAP_VERSION = 2.25-3
 LIBCAP_URL = https://github.com/amylum/libcap/releases/download/$(LIBCAP_VERSION)/libcap.tar.gz
 LIBCAP_TAR = /tmp/libcap.tar.gz
 LIBCAP_DIR = /tmp/libcap
