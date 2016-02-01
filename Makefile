@@ -12,6 +12,12 @@ PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe --tags | sed 's/v//')
 PATCH_VERSION = $$(cat version)
 VERSION = $(PACKAGE_VERSION)-$(PATCH_VERSION)
 
+LIBCAP_VERSION = 2.25-2
+LIBCAP_URL = https://github.com/amylum/libcap/releases/download/$(LIBCAP_VERSION)/libcap.tar.gz
+LIBCAP_TAR = /tmp/libcap.tar.gz
+LIBCAP_DIR = /tmp/libcap
+LIBCAP_PATH = -I$(LIBCAP_DIR)/usr/include -L$(LIBCAP_DIR)/usr/lib
+
 .PHONY : default submodule deps manual container deps build version push local
 
 default: submodule container
@@ -27,9 +33,13 @@ container:
 
 deps:
 	rm -rf $(DEP_DIR)
-	mkdir -p $(DEP_DIR)/usr/include/sys
+	mkdir -p $(DEP_DIR)/usr/include
 	cp -R /usr/include/{linux,asm,asm-generic} $(DEP_DIR)/usr/include/
-	cp -R /usr/include/sys/capability.h $(DEP_DIR)/usr/include/sys/
+	rm -rf $(LIBCAP_DIR) $(LIBCAP_TAR)
+	mkdir $(LIBCAP_DIR)
+	curl -sLo $(LIBCAP_TAR) $(LIBCAP_URL)
+	tar -x -C $(LIBCAP_DIR) -f $(LIBCAP_TAR)
+
 
 build: submodule deps
 	rm -rf $(BUILD_DIR)
@@ -41,7 +51,7 @@ build: submodule deps
 	rm -rf $(BUILD_DIR)/.git
 	cp -R .git/modules/upstream $(BUILD_DIR)/.git
 	sed -i '/worktree/d' $(BUILD_DIR)/.git/config
-	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) CC=musl-gcc CFLAGS='$(CFLAGS)'
+	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) CC=musl-gcc CFLAGS='$(CFLAGS) $(LIBCAP_PATH)'
 	mkdir -p $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE)
 	cp $(BUILD_DIR)/COPYING $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE)/LICENSE
 	cd $(RELEASE_DIR) && tar -czvf $(RELEASE_FILE) *
