@@ -1,3 +1,0 @@
-[submodule "upstream"]
-	path = upstream
-	url = git://git.linux-ipv6.org/gitroot/iputils.git
