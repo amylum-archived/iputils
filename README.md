@@ -3,7 +3,7 @@ iputils
 
 [![BSD Licensed](http://img.shields.io/badge/license-BSD-green.svg)](https://tldrlegal.com/license/4-clause-bsd)
 
-Package repo for [iputils](http://www.skbuff.net/iputils/)
+Package repo for [iputils](https://github.com/iputils/iputils)
 
 ## Usage
 
