@@ -12,19 +12,19 @@ PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe --tags | sed 's/s//')
 PATCH_VERSION = $$(cat version)
 VERSION = $(PACKAGE_VERSION)-$(PATCH_VERSION)
 
-LIBCAP_VERSION = 2.25-3
+LIBCAP_VERSION = 2.25-4
 LIBCAP_URL = https://github.com/amylum/libcap/releases/download/$(LIBCAP_VERSION)/libcap.tar.gz
 LIBCAP_TAR = /tmp/libcap.tar.gz
 LIBCAP_DIR = /tmp/libcap
 LIBCAP_PATH = -I$(LIBCAP_DIR)/usr/include -L$(LIBCAP_DIR)/usr/lib
 
-LIBGCRYPT_VERSION = 1.6.5-4
+LIBGCRYPT_VERSION = 1.7.2-7
 LIBGCRYPT_URL = https://github.com/amylum/libgcrypt/releases/download/$(LIBGCRYPT_VERSION)/libgcrypt.tar.gz
 LIBGCRYPT_TAR = /tmp/libgcrypt.tar.gz
 LIBGCRYPT_DIR = /tmp/libgcrypt
 LIBGCRYPT_PATH = -I$(LIBGCRYPT_DIR)/usr/include -L$(LIBGCRYPT_DIR)/usr/lib
 
-LIBGPG-ERROR_VERSION = 1.22-4
+LIBGPG-ERROR_VERSION = 1.24-6
 LIBGPG-ERROR_URL = https://github.com/amylum/libgpg-error/releases/download/$(LIBGPG-ERROR_VERSION)/libgpg-error.tar.gz
 LIBGPG-ERROR_TAR = /tmp/libgpgerror.tar.gz
 LIBGPG-ERROR_DIR = /tmp/libgpg-error
