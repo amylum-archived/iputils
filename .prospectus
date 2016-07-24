@@ -1,8 +1,7 @@
 item do
   expected do
-    url_xpath
-    url 'http://www.linux-ipv6.org/gitweb/gitweb.cgi?p=gitroot/iputils.git;a=tags'
-    xpath '/html/body/table/tr[1]/td[2]/a'
+    github_release
+    repo 'iputils/iputils'
     regex /^s(\d+)$/
   end
 
