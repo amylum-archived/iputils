@@ -30,6 +30,12 @@ LIBGPG-ERROR_TAR = /tmp/libgpgerror.tar.gz
 LIBGPG-ERROR_DIR = /tmp/libgpg-error
 LIBGPG-ERROR_PATH = -I$(LIBGPG-ERROR_DIR)/usr/include -L$(LIBGPG-ERROR_DIR)/usr/lib
 
+LIBIDN_VERSION = 1.33-2
+LIBIDN_URL = https://github.com/amylum/libidn/releases/download/$(LIBIDN_VERSION)/libidn.tar.gz
+LIBIDN_TAR = /tmp/libidn.tar.gz
+LIBIDN_DIR = /tmp/libidn
+LIBIDN_PATH = -I$(LIBIDN_DIR)/usr/include -L$(LIBIDN_DIR)/usr/lib
+
 .PHONY : default submodule deps manual container deps build version push local
 
 default: submodule container
@@ -59,6 +65,10 @@ deps:
 	mkdir $(LIBGPG-ERROR_DIR)
 	curl -sLo $(LIBGPG-ERROR_TAR) $(LIBGPG-ERROR_URL)
 	tar -x -C $(LIBGPG-ERROR_DIR) -f $(LIBGPG-ERROR_TAR)
+	rm -rf $(LIBIDN_DIR) $(LIBIDN_TAR)
+	mkdir $(LIBIDN_DIR)
+	curl -sLo $(LIBIDN_TAR) $(LIBIDN_URL)
+	tar -x -C $(LIBIDN_DIR) -f $(LIBIDN_TAR)
 
 build: submodule deps
 	rm -rf $(BUILD_DIR)
@@ -72,7 +82,7 @@ build: submodule deps
 	rm -rf $(BUILD_DIR)/.git
 	cp -R .git/modules/upstream $(BUILD_DIR)/.git
 	sed -i '/worktree/d' $(BUILD_DIR)/.git/config
-	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) CC=musl-gcc CFLAGS='$(CFLAGS) $(LIBCAP_PATH) $(LIBGCRYPT_PATH) $(LIBGPG-ERROR_PATH)' LDFLAGS='$(LIBCAP_PATH) $(LIBGCRYPT_PATH) $(LIBGPG-ERROR_PATH)'
+	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) CC=musl-gcc CFLAGS='$(CFLAGS) $(LIBCAP_PATH) $(LIBGCRYPT_PATH) $(LIBGPG-ERROR_PATH) $(LIBIDN_PATH)' LDFLAGS='$(LIBCAP_PATH) $(LIBGCRYPT_PATH) $(LIBGPG-ERROR_PATH) $(LIBIDN_PATH)'
 	mkdir -p $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE) $(RELEASE_DIR)/usr/bin
 	find $(BUILD_DIR) -maxdepth 1 -type f -executable | xargs -I{} cp {} $(RELEASE_DIR)/usr/bin
 	chmod 4755 $(RELEASE_DIR)/usr/bin/{ping,ping6}
