@@ -11,7 +11,7 @@ item do
   end
 
   deps do
-    %w(libcap libgcrypt libgpg-error).each do |dep|
+    %w(libcap libgcrypt libgpg-error libidn nettle).each do |dep|
       item do
         name dep
 

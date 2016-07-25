@@ -1,0 +1,73 @@
+diff -u -N -r a/ai_idn.h b/ai_idn.h
+--- a/ai_idn.h	1970-01-01 00:00:00.000000000 +0000
++++ b/ai_idn.h	2016-07-25 01:56:49.865210746 +0000
+@@ -0,0 +1,9 @@
++#ifndef AI_IDN
++#define AI_IDN  0x0040
++#endif
++#ifndef NI_IDN
++#define NI_IDN  32
++#endif
++#ifndef AI_CANONIDN
++#define AI_CANONIDN     0x0080
++#endif
+diff -u -N -r a/arping.c b/arping.c
+--- a/arping.c	2016-07-24 23:48:31.707651868 +0000
++++ b/arping.c	2016-07-25 01:58:07.184848680 +0000
+@@ -47,6 +47,8 @@
+ #include <locale.h>
+ #endif
+ 
++#include "ai_idn.h"
++
+ #include "SNAPSHOT.h"
+ 
+ static void usage(void) __attribute__((noreturn));
+diff -u -N -r a/ping.h b/ping.h
+--- a/ping.h	2016-07-24 23:48:31.717651820 +0000
++++ b/ping.h	2016-07-25 01:57:29.395025640 +0000
+@@ -45,6 +45,8 @@
+ #define getnameinfo_flags 0
+ #endif
+ 
++#include "ai_idn.h"
++
+ #ifndef WITHOUT_IFADDRS
+ #include <ifaddrs.h>
+ #endif
+diff -u -N -r a/tracepath.c b/tracepath.c
+--- a/tracepath.c	2016-07-24 23:48:31.717651820 +0000
++++ b/tracepath.c	2016-07-25 01:57:51.404922566 +0000
+@@ -34,6 +34,8 @@
+ #define getnameinfo_flags	0
+ #endif
+ 
++#include "ai_idn.h"
++
+ #ifndef IP_PMTUDISC_PROBE
+ #define IP_PMTUDISC_PROBE	3
+ #endif
+diff -u -N -r a/tracepath6.c b/tracepath6.c
+--- a/tracepath6.c	2016-07-24 23:48:31.717651820 +0000
++++ b/tracepath6.c	2016-07-25 01:58:00.734878879 +0000
+@@ -32,6 +32,8 @@
+ #include <locale.h>
+ #endif
+ 
++#include "ai_idn.h"
++
+ #ifndef SOL_IPV6
+ #define SOL_IPV6 IPPROTO_IPV6
+ #endif
+diff -u -N -r a/traceroute6.c b/traceroute6.c
+--- a/traceroute6.c	2016-07-24 23:48:31.717651820 +0000
++++ b/traceroute6.c	2016-07-25 01:57:40.654972914 +0000
+@@ -256,6 +256,8 @@
+ #define getnameinfo_flags	0
+ #endif
+ 
++#include "ai_idn.h"
++
+ #include <arpa/inet.h>
+ 
+ #include <netdb.h>

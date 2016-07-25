@@ -36,6 +36,12 @@ LIBIDN_TAR = /tmp/libidn.tar.gz
 LIBIDN_DIR = /tmp/libidn
 LIBIDN_PATH = -I$(LIBIDN_DIR)/usr/include -L$(LIBIDN_DIR)/usr/lib
 
+NETTLE_VERSION = 3.2-4
+NETTLE_URL = https://github.com/amylum/nettle/releases/download/$(NETTLE_VERSION)/nettle.tar.gz
+NETTLE_TAR = /tmp/nettle.tar.gz
+NETTLE_DIR = /tmp/nettle
+NETTLE_PATH = -I$(NETTLE_DIR)/usr/include -L$(NETTLE_DIR)/usr/lib
+
 .PHONY : default submodule deps manual container deps build version push local
 
 default: submodule container
@@ -69,23 +75,22 @@ deps:
 	mkdir $(LIBIDN_DIR)
 	curl -sLo $(LIBIDN_TAR) $(LIBIDN_URL)
 	tar -x -C $(LIBIDN_DIR) -f $(LIBIDN_TAR)
+	rm -rf $(NETTLE_DIR) $(NETTLE_TAR)
+	mkdir $(NETTLE_DIR)
+	curl -sLo $(NETTLE_TAR) $(NETTLE_URL)
+	tar -x -C $(NETTLE_DIR) -f $(NETTLE_TAR)
 
 build: submodule deps
 	rm -rf $(BUILD_DIR)
 	cp -R upstream $(BUILD_DIR)
-	patch -d $(BUILD_DIR) -p1 < patches/net-misc_iputils_files_iputils-20121221-add-bits_types_h.patch
-	patch -d $(BUILD_DIR) -p1 < patches/time.patch
-	patch -d $(BUILD_DIR) -p1 < patches/net-misc_iputils_files_iputils-20121221-fix-musl-headers.patch
-	patch -d $(BUILD_DIR) -p1 < patches/net-misc_iputils_files_iputils-20121221-fix-init-elemnt.patch
-	patch -d $(BUILD_DIR) -p1 < patches/net-misc_iputils_files_iputils-20121221-remove-rdisc-glibc-assumption.patch
-	patch -d $(BUILD_DIR) -p1 < patches/gpg-error.patch
+	patch -d $(BUILD_DIR) -p1 < patches/s20160308-ai-idn.patch
 	rm -rf $(BUILD_DIR)/.git
 	cp -R .git/modules/upstream $(BUILD_DIR)/.git
 	sed -i '/worktree/d' $(BUILD_DIR)/.git/config
-	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) CC=musl-gcc CFLAGS='$(CFLAGS) $(LIBCAP_PATH) $(LIBGCRYPT_PATH) $(LIBGPG-ERROR_PATH) $(LIBIDN_PATH)' LDFLAGS='$(LIBCAP_PATH) $(LIBGCRYPT_PATH) $(LIBGPG-ERROR_PATH) $(LIBIDN_PATH)'
+	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) CC=musl-gcc CFLAGS='$(CFLAGS) $(LIBCAP_PATH) $(LIBGCRYPT_PATH) $(LIBGPG-ERROR_PATH) $(LIBIDN_PATH) $(NETTLE_PATH)' LDFLAGS='$(LIBCAP_PATH) $(LIBGCRYPT_PATH) $(LIBGPG-ERROR_PATH) $(LIBIDN_PATH) $(NETTLE_PATH)'
 	mkdir -p $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE) $(RELEASE_DIR)/usr/bin
 	find $(BUILD_DIR) -maxdepth 1 -type f -executable | xargs -I{} cp {} $(RELEASE_DIR)/usr/bin
-	chmod 4755 $(RELEASE_DIR)/usr/bin/{ping,ping6}
+	chmod 4755 $(RELEASE_DIR)/usr/bin/ping
 	cp $(BUILD_DIR)/ninfod/COPYING $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE)/LICENSE
 	cd $(RELEASE_DIR) && tar -czvf $(RELEASE_FILE) *
 
