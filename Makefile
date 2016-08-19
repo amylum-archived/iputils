@@ -18,7 +18,7 @@ LIBCAP_TAR = /tmp/libcap.tar.gz
 LIBCAP_DIR = /tmp/libcap
 LIBCAP_PATH = -I$(LIBCAP_DIR)/usr/include -L$(LIBCAP_DIR)/usr/lib
 
-LIBGCRYPT_VERSION = 1.7.2-7
+LIBGCRYPT_VERSION = 1.7.3-11
 LIBGCRYPT_URL = https://github.com/amylum/libgcrypt/releases/download/$(LIBGCRYPT_VERSION)/libgcrypt.tar.gz
 LIBGCRYPT_TAR = /tmp/libgcrypt.tar.gz
 LIBGCRYPT_DIR = /tmp/libgcrypt
