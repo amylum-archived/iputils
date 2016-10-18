@@ -26,12 +26,7 @@ patch 's20160308-ai-idn.patch'
 
 build do
   run "make CC=musl-gcc CFLAGS='#{@forge.cflags.join(' ')}' LDFLAGS='#{@forge.cflags.join(' ')}'"
-  Dir.glob('doc/*.sgml').each do |doc_sgml|
-    doc_xml = doc.sub('.sgml', '.xml')
-    run "osx -xlower -xno-nl-in-tag '#{doc_sgml}' > '#{doc_xml}' || true"
-    run "sed -i 's|<refname>\(.*\), \(.*\)</refname>|<refname>\1</refname>, <refname>\2</refname>|g' '#{doc_xml}'"
-    run "docbook2man '#{doc_xml}'"
-  end
+  run 'make man'
   run "mkdir -p #{releasedir}/usr/bin #{releasedir}/usr/share/man/man8"
   %w(arping clockdiff ping rarpd rdisc tftpd tracepath).each do |bin|
     run "cp #{bin} #{releasedir}/usr/bin/"
