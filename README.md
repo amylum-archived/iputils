@@ -1,6 +1,8 @@
 iputils
 ==========
 
+[![Build Status](https://img.shields.io/circleci/project/amylum/iputils/master.svg)](https://circleci.com/gh/amylum/iputils)
+[![GitHub release](https://img.shields.io/github/release/amylum/iputils.svg)](https://github.com/amylum/iputils/releases)
 [![BSD Licensed](http://img.shields.io/badge/license-BSD-green.svg)](https://tldrlegal.com/license/4-clause-bsd)
 
 Package repo for [iputils](https://github.com/iputils/iputils)

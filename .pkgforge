@@ -1,0 +1,33 @@
+name 'iputils'
+org 'amylum'
+
+licenses 'ninfod/COPYING'
+
+deps(
+  libcap: '2.25-4',
+  libgcrypt: '1.7.3-11',
+  'libgpg-error': '1.24-6',
+  libidn: '1.33-2',
+  nettle: '3.2-4',
+  'linux-api-headers': '4.8-rc6-2'
+)
+
+configure_flags(
+  prefix: '/usr',
+  'with-include': "#{dep(:skalibs)}/usr/include",
+  'with-lib': "#{dep(:skalibs)}/usr/lib/skalibs",
+  'with-dynlib': "#{dep(:skalibs)}/usr/lib",
+  'with-sysdeps': "#{dep(:skalibs)}/usr/lib/skalibs/sysdeps"
+)
+
+harden
+
+patch 's20160308-ai-idn.patch'
+
+build do
+  run 'false'
+end
+
+test do
+  # TODO: add tests
+end
