@@ -1,8 +1,6 @@
 name 'iputils'
 org 'amylum'
 
-licenses 'ninfod/COPYING'
-
 deps(
   libcap: '2.25-4',
   libgcrypt: '1.7.3-11',
@@ -20,12 +18,27 @@ configure_flags(
   'with-sysdeps': "#{dep(:skalibs)}/usr/lib/skalibs/sysdeps"
 )
 
+cflags
 harden
 
+patch 'license.patch'
 patch 's20160308-ai-idn.patch'
 
 build do
-  run 'false'
+  run "make CC=musl-gcc CFLAGS='#{@forge.cflags.join(' ')}' LDFLAGS='#{@forge.cflags.join(' ')}'"
+  Dir.glob('doc/*.sgml').each do |doc_sgml|
+    doc_xml = doc.sub('.sgml', '.xml')
+    run "osx -xlower -xno-nl-in-tag '#{doc_sgml}' > '#{doc_xml}' || true"
+    run "sed -i 's|<refname>\(.*\), \(.*\)</refname>|<refname>\1</refname>, <refname>\2</refname>|g' '#{doc_xml}'"
+    run "docbook2man '#{doc_xml}'"
+  end
+  run "mkdir -p #{releasedir}/usr/bin #{releasedir}/usr/share/man/man8"
+  %w(arping clockdiff ping rarpd rdisc tftpd tracepath).each do |bin|
+    run "cp #{bin} #{releasedir}/usr/bin/"
+    run "cp doc/#{bin}.8 #{releasedir}/usr/share/man/man8/"
+  end
+  run "cp tracepath6 #{releasedir}/usr/bin/"
+  run "ln -sf tracepath.8.gz #{releasedir}/usr/share/man/man8/tracepath6.8.gz"
 end
 
 test do
