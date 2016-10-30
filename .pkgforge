@@ -17,6 +17,8 @@ configure_flags(
   'with-dynlib': "#{dep(:skalibs)}/usr/lib",
   'with-sysdeps': "#{dep(:skalibs)}/usr/lib/skalibs/sysdeps"
 )
+remove_linker_archives
+remove_pkgconfig_files
 
 cflags
 harden
