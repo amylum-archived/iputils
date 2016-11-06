@@ -24,7 +24,6 @@ cflags
 harden
 
 patch 'license.patch'
-patch 's20160308-ai-idn.patch'
 
 build do
   run "make CC=musl-gcc CFLAGS='#{@forge.cflags.join(' ')}' LDFLAGS='#{@forge.cflags.join(' ')}'"
