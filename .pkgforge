@@ -2,12 +2,12 @@ name 'iputils'
 org 'amylum'
 
 deps(
-  libcap: '2.25-8',
+  libcap: '2.25-9',
   libgcrypt: '1.7.3-13',
   'libgpg-error': '1.24-7',
   libidn: '1.33-2',
   nettle: '3.3-5',
-  'linux-api-headers': '4.9-rc3-2'
+  'linux-api-headers': '4.9-rc4-1'
 )
 
 configure_flags(
