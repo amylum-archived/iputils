@@ -6,7 +6,7 @@ deps(
   libgcrypt: '1.7.5-1',
   'libgpg-error': '1.25-1',
   libidn: '1.33-2',
-  nettle: '3.3-5',
+  nettle: '3.3-6',
   'linux-api-headers': '4.9-1'
 )
 
