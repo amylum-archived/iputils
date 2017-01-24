@@ -3,7 +3,7 @@ org 'amylum'
 
 deps(
   libcap: '2.25-16',
-  libgcrypt: '1.7.5-2',
+  libgcrypt: '1.7.6-1',
   'libgpg-error': '1.26-1',
   libidn: '1.33-2',
   nettle: '3.3-6',
