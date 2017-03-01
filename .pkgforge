@@ -3,8 +3,8 @@ org 'amylum'
 
 deps(
   libcap: '2.25-19',
-  libgcrypt: '1.7.6-1',
-  'libgpg-error': '1.26-1',
+  libgcrypt: '1.7.6-2',
+  'libgpg-error': '1.27-1',
   libidn: '1.33-2',
   nettle: '3.3-6',
   'linux-api-headers': '4.10-1'
