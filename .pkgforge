@@ -2,7 +2,7 @@ name 'iputils'
 org 'amylum'
 
 deps(
-  libcap: '2.25-19',
+  libcap: '2.25-20',
   libgcrypt: '1.7.6-2',
   'libgpg-error': '1.27-1',
   libidn: '1.33-2',
