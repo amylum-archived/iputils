@@ -2,12 +2,30 @@ name 'iputils'
 org 'amylum'
 
 deps(
-  libcap: '2.25-24',
-  libgcrypt: '1.8.0-1',
-  'libgpg-error': '1.27-1',
-  libidn: '1.33-2',
-  nettle: '3.3-6',
-  'linux-api-headers': '4.12-1'
+  libcap: {
+    version: '2.25-24',
+    checksum: '1b75cc81ce86cc2701092544bcfe5f4e3357cd71048e98f18a8daa66d4716e9c'
+  },
+  libgcrypt: {
+    version: '1.8.0-1',
+    checksum: '81c088e29a1c393b7f7ef654de263efa1906478a1452e9f45af5bbefd82b7f49'
+  },
+  'libgpg-error': {
+    version: '1.27-1',
+    checksum: '7ae57f06296bf6ef98fc450f7ef7d1a47753d429c1cdc440045a03ed108d58de'
+  },
+  libidn: {
+    version: '1.33-2',
+    checksum: '8320beb19563e507acf2e2e79adb5bfcbcefcb0c5a29a21c9fd288323e0087da'
+  },
+  nettle: {
+    version: '3.3-6',
+    checksum: 'ec781f78b78f54eeac9abb866a0d1e2cd63dd9abb4a4cc0026f0f10eea0f898b'
+  },
+  'linux-api-headers': {
+    version: '4.12-1',
+    checksum: '25d3672456a93cc7f6743d4b2c227ad7a9456f4ec2a9f09ab7f2e9e6cb56aeaa'
+  }
 )
 
 configure_flags(
