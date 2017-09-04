@@ -3,8 +3,8 @@ org 'amylum'
 
 deps(
   libcap: {
-    version: '2.25-24',
-    checksum: '1b75cc81ce86cc2701092544bcfe5f4e3357cd71048e98f18a8daa66d4716e9c'
+    version: '2.25-25',
+    checksum: 'd2c761d2258d83a801ec98b21b405a0ab3268f9628e998d7efb06a974cb305ba'
   },
   libgcrypt: {
     version: '1.8.1-1',
@@ -23,8 +23,8 @@ deps(
     checksum: 'ec781f78b78f54eeac9abb866a0d1e2cd63dd9abb4a4cc0026f0f10eea0f898b'
   },
   'linux-api-headers': {
-    version: '4.12-1',
-    checksum: '25d3672456a93cc7f6743d4b2c227ad7a9456f4ec2a9f09ab7f2e9e6cb56aeaa'
+    version: '4.13-1',
+    checksum: '50b2288419fe132c061bdf3d297293011929abc1092ffaa5e523ad6549b4f5fa'
   }
 )
 
