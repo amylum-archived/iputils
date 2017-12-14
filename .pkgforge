@@ -7,8 +7,8 @@ deps(
     checksum: '4203608015d389a3c7dba30a06e50abd8e63156bd218156c3603bc9553ca8d41'
   },
   libgcrypt: {
-    version: '1.8.1-1',
-    checksum: '04cc1afaddbffb4d0cf00bec0f7415dac6ddbd6e379e451b5ba4a6f843f22ca9'
+    version: '1.8.2-1',
+    checksum: '8b17f57e74b1ab99b94c27f8cd44f02cb8d4a45b640d4c9d17e8a984924bac05'
   },
   'libgpg-error': {
     version: '1.27-1',
