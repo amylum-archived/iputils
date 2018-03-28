@@ -3,8 +3,8 @@ org 'amylum'
 
 deps(
   libcap: {
-    version: '2.25-34',
-    checksum: '624e0521a2a3ff62db265802126958a53fbda2c2ba032307c769a59fac42c783'
+    version: '2.25-35',
+    checksum: '7774db7db915442dcec65ebea70749c46821ee73bef3fede184d76236352f96d'
   },
   libgcrypt: {
     version: '1.8.2-2',
