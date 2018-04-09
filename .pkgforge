@@ -15,8 +15,8 @@ deps(
     checksum: '55eec88e8ef7164bc4c2a851fb1f8128f3fe0b0a5e464db77725affb19191f6e'
   },
   libidn: {
-    version: '1.33-2',
-    checksum: '8320beb19563e507acf2e2e79adb5bfcbcefcb0c5a29a21c9fd288323e0087da'
+    version: '1.34-1',
+    checksum: 'b3695d64e07ae096087b0cfeeac8e509bbd656fd360790006731de22f55770bd'
   },
   nettle: {
     version: '3.4-1',
