@@ -13,8 +13,8 @@ deps(
     checksum: '1b92c16e0c7ad57ed129c54e1715d0ee4b56751c3a8fa73b127ee93d9d83c606'
   },
   'libgpg-error': {
-    version: '1.30-1',
-    checksum: 'b9c60db131776b8c73df89c165150a567e4e52d617e1659b702acc8417bf52c6'
+    version: '1.31-1',
+    checksum: '8f405a9f6936a5e17e992bd69211a0e22cfa52a18abcc8eb217ea86a1871085a'
   },
   libidn: {
     version: '1.35-1',
