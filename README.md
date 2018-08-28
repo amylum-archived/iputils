@@ -1,7 +1,7 @@
 iputils
 ==========
 
-[![Build Status](https://img.shields.io/circleci/project/amylum/iputils/master.svg)](https://circleci.com/gh/amylum/iputils)
+[![Build Status](https://img.shields.io/travis/com/amylum/iputils.svg)](https://travis-ci.com/amylum/iputils)
 [![GitHub release](https://img.shields.io/github/release/amylum/iputils.svg)](https://github.com/amylum/iputils/releases)
 [![GPL2 Licensed](http://img.shields.io/badge/license-GPL2-green.svg)](https://tldrlegal.com/license/gnu-general-public-license-v2)
 
