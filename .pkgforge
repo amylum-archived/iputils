@@ -3,28 +3,28 @@ org 'amylum'
 
 deps(
   libcap: {
-    version: '2.25-43',
-    checksum: '6432e4ea043a1fbbaba93c55de2a7364e4b48161ba35f2e7c9e1bc7a71f8f650'
+    version: '2.25-44',
+    checksum: '4fbd26514144043b6798add7a7ef5261e82f6c346dd66f48d83fbf738e442662'
   },
   libgcrypt: {
     version: '1.8.4-1',
     checksum: '77d6c555e1b88e84ac57899257b91e658f06e06eee90d112964cd1eae797517a'
   },
   'libgpg-error': {
-    version: '1.31-1',
-    checksum: '8f405a9f6936a5e17e992bd69211a0e22cfa52a18abcc8eb217ea86a1871085a'
+    version: '1.33-1',
+    checksum: '5ea72a6eb04e3048885ae43fe2bbc1090c66946e861b10a5a868787172997721'
   },
   libidn: {
     version: '1.35-1',
     checksum: '5644f6622d77ca173e0f470b941d241ce1fc2e2cdac764e2eb20e6d24d07bfcf'
   },
   nettle: {
-    version: '3.4-1',
-    checksum: 'e960c73d20806156d7dc3fc604af6d031122efe65f9e5155bfafa9280eaf241b'
+    version: '3.4.1-1',
+    checksum: 'bde793b4551aa928a8fee81e598a18376a7ab157e59e1c17e232d876f1aac4e8'
   },
   'linux-api-headers': {
-    version: '4.19-1',
-    checksum: 'de68cab17c2354ee660b269ccca30e275a9314563ebdfb4f427fc5ebe1395f30'
+    version: '4.20-1',
+    checksum: 'aed037b2b3fb2df77ca19359a20188d39c25d011febf4d3733d251fa87ca9636'
   }
 )
 
