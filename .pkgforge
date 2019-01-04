@@ -1,6 +1,8 @@
 name 'iputils'
 org 'amylum'
 
+licenses ['LICENSE.GPL2', 'LICENSE.BSD3']
+
 deps(
   libcap: {
     version: '2.25-45',
@@ -41,7 +43,6 @@ remove_pkgconfig_files
 cflags
 harden
 
-patch 'license.patch'
 patch 'iputils-20150815-missing-AI_IDN-AI_CANONIDN-NI_IDN.patch'
 
 build do
