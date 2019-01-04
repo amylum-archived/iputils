@@ -45,7 +45,6 @@ cflags
 harden
 
 patch 'musl-idn-fixes.patch'
-#patch 'makefile.patch'
 
 build do
   run "make CC=musl-gcc CFLAGS='#{@forge.cflags.join(' ')}' LDFLAGS='#{@forge.cflags.join(' ')} -lunistring'"
