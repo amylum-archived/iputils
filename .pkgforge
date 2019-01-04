@@ -5,8 +5,12 @@ licenses ['LICENSE.GPL2', 'LICENSE.BSD3']
 
 deps(
   libcap: {
-    version: '2.25-45',
-    checksum: '053589a5414da5a8e2779c59d84c94d17f51c1b3e857264ce6987ea5f77f7a6b'
+    version: '2.25-46',
+    checksum: 'ea1f98340dd0c61a0c88757cf9f73577db770c8598ae7923ea784c00a4ae1a18'
+  },
+  libidn2: {
+    version: '2.0.5-1',
+    checksum: '00661dcdc31ec1dd7c540494d4add86a7a9b513c42286b76ff00b4423a60f9b5'
   },
   libgcrypt: {
     version: '1.8.4-2',
@@ -20,6 +24,10 @@ deps(
     version: '1.35-1',
     checksum: '5644f6622d77ca173e0f470b941d241ce1fc2e2cdac764e2eb20e6d24d07bfcf'
   },
+  libunistring: {
+    version: '0.9.10-1',
+    checksum: '270e10a91478e7d3174cf03ffdc22f508276c784fa6228d5935347d90236319c'
+  },
   nettle: {
     version: '3.4.1-1',
     checksum: 'bde793b4551aa928a8fee81e598a18376a7ab157e59e1c17e232d876f1aac4e8'
@@ -30,23 +38,17 @@ deps(
   }
 )
 
-configure_flags(
-  prefix: '/usr',
-  'with-include': "#{dep(:skalibs)}/usr/include",
-  'with-lib': "#{dep(:skalibs)}/usr/lib/skalibs",
-  'with-dynlib': "#{dep(:skalibs)}/usr/lib",
-  'with-sysdeps': "#{dep(:skalibs)}/usr/lib/skalibs/sysdeps"
-)
 remove_linker_archives
 remove_pkgconfig_files
 
 cflags
 harden
 
-patch 'iputils-20150815-missing-AI_IDN-AI_CANONIDN-NI_IDN.patch'
+patch 'musl-idn-fixes.patch'
+#patch 'makefile.patch'
 
 build do
-  run "make CC=musl-gcc CFLAGS='#{@forge.cflags.join(' ')}' LDFLAGS='#{@forge.cflags.join(' ')}'"
+  run "make CC=musl-gcc CFLAGS='#{@forge.cflags.join(' ')}' LDFLAGS='#{@forge.cflags.join(' ')} -lunistring'"
   run 'make man'
   run "mkdir -p #{releasedir}/usr/bin #{releasedir}/usr/share/man/man8"
   %w(arping clockdiff ping rarpd rdisc tftpd tracepath).each do |bin|

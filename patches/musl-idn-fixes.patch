@@ -1,0 +1,65 @@
+diff --git a/arping.c b/arping.c
+index c2f2129..03f5756 100644
+--- a/arping.c
++++ b/arping.c
+@@ -44,6 +44,7 @@
+ 
+ #ifdef USE_IDN
+ #include <locale.h>
++#include "idn.h"
+ #endif
+ 
+ #include "SNAPSHOT.h"
+diff --git a/idn.h b/idn.h
+new file mode 100644
+index 0000000..e553c61
+--- /dev/null
++++ b/idn.h
+@@ -0,0 +1,11 @@
++#ifndef AI_IDN
++#define AI_IDN 0x0040
++#endif
++
++#ifndef AI_CANONIDN
++#define AI_CANONIDN 0x0080
++#endif
++
++#ifndef NI_IDN
++#define NI_IDN 32
++#endif
+diff --git a/ping.h b/ping.h
+index 3e09685..da69f77 100644
+--- a/ping.h
++++ b/ping.h
+@@ -37,6 +37,7 @@
+ 
+ #ifdef USE_IDN
+ #include <idn2.h>
++#include "idn.h"
+ #define getaddrinfo_flags (AI_CANONNAME | AI_IDN | AI_CANONIDN)
+ #define getnameinfo_flags NI_IDN
+ #else
+diff --git a/tracepath.c b/tracepath.c
+index 53bda16..a9f8269 100644
+--- a/tracepath.c
++++ b/tracepath.c
+@@ -29,6 +29,7 @@
+ 
+ #ifdef USE_IDN
+ #include <locale.h>
++#include "idn.h"
+ #define getnameinfo_flags	NI_IDN
+ #else
+ #define getnameinfo_flags	0
+diff --git a/traceroute6.c b/traceroute6.c
+index a1022f9..c91f107 100644
+--- a/traceroute6.c
++++ b/traceroute6.c
+@@ -245,6 +245,7 @@
+ 
+ #ifdef USE_IDN
+ #include <locale.h>
++#include "idn.h"
+ 
+ #define ADDRINFO_IDN_FLAGS	AI_IDN
+ #define getnameinfo_flags	NI_IDN
