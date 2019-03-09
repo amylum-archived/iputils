@@ -5,12 +5,12 @@ licenses ['LICENSE.GPL2', 'LICENSE.BSD3']
 
 deps(
   libcap: {
-    version: '2.25-48',
-    checksum: '8ed27e983ec8a79665764089d1d2c55cbbb35cdf7ff8a6a60332eac0a4290b54'
+    version: '2.25-49',
+    checksum: '92b9503c53aba0a2b9f7c8ab82ba860a85ee9ffc099eb2b6ed8f1ad58f36ce52'
   },
   libidn2: {
-    version: '2.0.5-1',
-    checksum: '00661dcdc31ec1dd7c540494d4add86a7a9b513c42286b76ff00b4423a60f9b5'
+    version: '2.1.1-1',
+    checksum: 'c3077afea31bf654551c76e24c28fa7ff74e5d7ff789cb1c60edc0dc26e8cc71'
   },
   libgcrypt: {
     version: '1.8.4-3',
@@ -33,8 +33,8 @@ deps(
     checksum: 'bde793b4551aa928a8fee81e598a18376a7ab157e59e1c17e232d876f1aac4e8'
   },
   'linux-api-headers': {
-    version: '4.20-1',
-    checksum: 'aed037b2b3fb2df77ca19359a20188d39c25d011febf4d3733d251fa87ca9636'
+    version: '5.0-1',
+    checksum: '0703e1a5406fea7aa0072034e815fc2b3188151732ec61b134b0e54aa3e752ab'
   }
 )
 
